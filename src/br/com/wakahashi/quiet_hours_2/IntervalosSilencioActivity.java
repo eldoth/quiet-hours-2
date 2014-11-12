@@ -1,16 +1,47 @@
 package br.com.wakahashi.quiet_hours_2;
 
+import br.com.wakahashi.quiet_hours_2.impl.NotificacoesServiceImpl;
 import android.app.Activity;
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class IntervalosSilencioActivity extends Activity {
+	
+	private NotificacoesServiceImpl notificacoesServiceImpl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_intervalos_silencio);
+		
+		notificacoesServiceImpl = new NotificacoesServiceImpl();
+		notificacoesServiceImpl.setAudioManager((AudioManager) this.getSystemService(Context.AUDIO_SERVICE));
+		
+		Button botaoLigar = (Button) findViewById(R.id.botao_volume_max);
+		botaoLigar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				notificacoesServiceImpl.ligarVibracao();
+			}
+		});
+		
+		
+		Button botaoSilenciar = (Button) findViewById(R.id.botao_volume_min);
+		botaoSilenciar.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				notificacoesServiceImpl.silenciarVibracao();
+			}
+		});
+		
 	}
 
 	@Override
