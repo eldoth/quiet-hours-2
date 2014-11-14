@@ -29,7 +29,7 @@ public class NotificacoesServiceImpl implements NotificacoesService {
 
 	@Override
 	public void silenciarFlash() {
-		//TEste gerrithub
+		//TEste gerrit
 		// TODO Auto-generated method stub
 
 	}
