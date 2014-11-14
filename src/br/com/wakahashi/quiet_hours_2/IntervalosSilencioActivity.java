@@ -42,8 +42,6 @@ public class IntervalosSilencioActivity extends Activity {
 			}
 		});
 		
-		//comentario para testar gerrithub
-		
 	}
 
 	@Override
